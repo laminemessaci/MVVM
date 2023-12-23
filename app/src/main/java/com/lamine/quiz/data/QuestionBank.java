@@ -1,6 +1,5 @@
 package com.lamine.quiz.data;
 
-import com.lamine.quiz.data.Question;
 
 import java.util.Arrays;
 import java.util.List;
