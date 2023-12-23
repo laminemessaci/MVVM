@@ -1,4 +1,4 @@
-package com.lamine.quiz;
+package com.lamine.quiz.ui.welcome;
 
 
 import android.graphics.Color;
@@ -18,12 +18,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.lamine.quiz.R;
 import com.lamine.quiz.databinding.FragmentWelcomeBinding;
+import com.lamine.quiz.ui.quiz.QuizFragment;
 
 
 public class WelcomeFragment extends Fragment {
 
     private FragmentWelcomeBinding binding;
+
+    public static WelcomeFragment newInstance() {
+        WelcomeFragment fragment = new WelcomeFragment();
+
+        return fragment;
+    }
 
 
     @Override
@@ -81,7 +89,7 @@ public class WelcomeFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                Log.i("TAG", "afterTextChanged: "+s);
+               // Log.i("TAG", "afterTextChanged: "+s);
 
             };
 
