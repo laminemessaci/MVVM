@@ -6,4 +6,9 @@
     <string name="welcome_to_app_quiz">Welcome to APP QUIZ !</string>
     <string name="settings">Settings</string>
     <string name="about">About</string>
+    <string name="username">lamine</string>
+    <string name="your_name_please">what is your name? </string>
+    <string name="let_s_start">let\'s start</string>
+    <string name="next">LetsGo</string>
+    <string name="Next">Next</string>
 </resources>

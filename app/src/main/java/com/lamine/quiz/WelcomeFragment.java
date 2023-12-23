@@ -1,62 +1,35 @@
 package com.lamine.quiz;
 
+
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
+
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 import com.lamine.quiz.databinding.FragmentWelcomeBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link WelcomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class WelcomeFragment extends Fragment {
 
     private FragmentWelcomeBinding binding;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public WelcomeFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment WelcomeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static WelcomeFragment newInstance(String param1, String param2) {
-        WelcomeFragment fragment = new WelcomeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -65,5 +38,54 @@ public class WelcomeFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentWelcomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        binding.lestGo.setEnabled(false);
+       // binding.lestGo.setTextColor(Color.GREEN);
+        binding.lestGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Bundle bundle = new Bundle();
+                bundle.putString("username", binding.username.getText().toString());
+                QuizFragment quizFragment = new QuizFragment();
+                quizFragment.setArguments(bundle);
+
+                FragmentManager fragmentManager = getParentFragmentManager();
+                fragmentManager.beginTransaction()
+                        .add(R.id.fragment_container_view, quizFragment).commit();
+
+
+            }
+        });
+
+        binding.username.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() > 0) {
+                    binding.lestGo.setEnabled(true);
+                    binding.lestGo.setTextColor(Color.GREEN);
+                } else {
+                    binding.lestGo.setEnabled(false);
+                    binding.lestGo.setTextColor(Color.RED);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.i("TAG", "afterTextChanged: "+s);
+
+            };
+
+
+        });
     }
 }

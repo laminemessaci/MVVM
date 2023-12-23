@@ -72,6 +72,8 @@ dependencies {
 
 
     implementation("com.google.android.material:material:1.11.0")
+
+
     implementation ("com.google.dagger:hilt-android:2.40.5")
 
 
