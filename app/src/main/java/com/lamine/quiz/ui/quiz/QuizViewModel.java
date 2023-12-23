@@ -7,10 +7,11 @@ import com.lamine.quiz.data.Question;
 import com.lamine.quiz.data.QuestionRepository;
 
 import java.util.List;
+import java.util.Objects;
 
 
 public class QuizViewModel extends ViewModel {
-    private QuestionRepository questionRepository;
+    private final QuestionRepository questionRepository;
     private List<Question> questions;
     private Integer currentQuestionIndex = 0;
 
@@ -29,7 +30,7 @@ public class QuizViewModel extends ViewModel {
     }
 
     public void nextQuestion() {
-        Integer nextIndex = currentQuestionIndex + 1;
+        int nextIndex = currentQuestionIndex + 1;
         if(nextIndex >= questions.size()) {
             return; // should not happened as the 'Next' button is not  displayed at the last question
         } else if (nextIndex == questions.size() - 1) {
@@ -41,7 +42,7 @@ public class QuizViewModel extends ViewModel {
 
     public Boolean isAnswerValid(Integer answerIndex) {
         Question question = currentQuestion.getValue();
-        boolean isValid = question != null && question.getAnswerIndex() == answerIndex;
+        boolean isValid = question != null && Objects.equals(question.getAnswerIndex(), answerIndex);
         Integer currentScore = score.getValue();
         if(currentScore != null && isValid) {
             score.setValue(currentScore + 1);
