@@ -1,21 +1,25 @@
 package com.lamine.quiz.ui.welcome;
 
 
+
 import android.graphics.Color;
 import android.os.Bundle;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 
 
 import com.lamine.quiz.R;
@@ -38,6 +42,7 @@ public class WelcomeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
     }
 
     @Override
@@ -51,6 +56,7 @@ public class WelcomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         binding.lestGo.setEnabled(false);
        // binding.lestGo.setTextColor(Color.GREEN);
         binding.lestGo.setOnClickListener(new View.OnClickListener() {
@@ -80,10 +86,11 @@ public class WelcomeFragment extends Fragment {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.length() > 0) {
                     binding.lestGo.setEnabled(true);
-                    binding.lestGo.setTextColor(Color.GREEN);
+                    binding.lestGo.setTextColor(Color.WHITE);
+                    binding.lestGo.setBackgroundColor(Color.parseColor("#596FB7"));
                 } else {
                     binding.lestGo.setEnabled(false);
-                    binding.lestGo.setTextColor(Color.RED);
+
                 }
             }
 

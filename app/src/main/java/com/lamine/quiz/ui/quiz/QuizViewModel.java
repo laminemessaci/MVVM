@@ -24,9 +24,12 @@ public class QuizViewModel extends ViewModel {
     MutableLiveData<Integer> score = new MutableLiveData<Integer>(0);
     MutableLiveData<Boolean> isLastQuestion = new MutableLiveData<Boolean>(false);
 
+
+
     public void startQuiz(){
         questions = questionRepository.getQuestions();
         currentQuestion.postValue(questions.get(0));
+
     }
 
     public void nextQuestion() {
